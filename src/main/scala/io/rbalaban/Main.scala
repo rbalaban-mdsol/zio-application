@@ -16,8 +16,10 @@ import io.rbalaban.application.sqs.SqsStreamSettings
 import io.rbalaban.config.Configuration.ServerConfig
 import zio.aws.core.config.AwsConfig
 import zio.aws.sqs.Sqs
-import io.rbalaban.application.sqs.{ Utils, SqsStream }
+import io.rbalaban.application.sqs.{ Client, SqsStream, Utils }
 import zio.aws.netty.NettyHttpClient
+
+import scala.language.postfixOps
 
 object Main extends ZIOAppDefault:
 
@@ -29,7 +31,7 @@ object Main extends ZIOAppDefault:
 
   private val healthCheckServiceLayer = HealthCheckServiceLive.layer
 
-  private val awsConfigLayer = AwsConfig.default
+  private val awsConfigLayer = Client.layer >>> AwsConfig.configured()
 
   val routes = HealthCheckRoutes.app
 
