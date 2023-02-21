@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS demo(
+    id serial PRIMARY KEY NOT NULL,
+    name VARCHAR NOT NULL
+);
