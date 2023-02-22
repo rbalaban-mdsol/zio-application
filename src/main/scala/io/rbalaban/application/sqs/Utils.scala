@@ -1,6 +1,7 @@
 package io.rbalaban.application.sqs
 
 import zio.aws.sqs.Sqs
+import zio.aws.sqs.SqsMock
 import zio.aws.sqs.model.{ CreateQueueRequest, GetQueueUrlRequest, QueueAttributeName }
 import zio.RIO
 

@@ -13,6 +13,9 @@ object Configuration:
   final case class ServerConfig(
       port: Int,
       sqsQueueName: String,
+      awsRegion: String,
+      awsAccessKey: String,
+      awsSecretAccessKey: String,
     )
 
   object ServerConfig:

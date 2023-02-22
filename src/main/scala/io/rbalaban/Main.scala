@@ -40,7 +40,7 @@ object Main extends ZIOAppDefault:
       config   <- getConfig[ServerConfig]
       _        <- Server.start(config.port, routes)
       queueUrl <- Utils.getQueueUrl(config.sqsQueueName)
-      _        <- SqsStream(queueUrl, SqsStreamSettings()).foreach(msg => Console.printLine(msg.body))
+      _        <- SqsStream(queueUrl).foreach(msg => Console.printLine(msg.body))
     yield ()
 
   override val run =
